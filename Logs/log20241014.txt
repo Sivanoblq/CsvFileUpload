@@ -1,0 +1,1020 @@
+2024-10-14 13:11:49.170 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 13:11:49.216 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 13:11:49.230 +05:30 [INF] Hosting environment: Development
+2024-10-14 13:11:49.230 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 13:11:50.219 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 1009.5785ms
+2024-10-14 13:11:50.334 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 13:11:50.358 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 13:11:50.386 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 28.2648ms
+2024-10-14 13:11:50.510 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 176.3398ms
+2024-10-14 13:11:50.594 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 13:11:50.775 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 181.5504ms
+2024-10-14 13:13:06.657 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - multipart/form-data; boundary=----WebKitFormBoundaryoP2BoUi5AzvdNqCR 636
+2024-10-14 13:13:06.668 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 13:13:06.707 +05:30 [INF] Route matched with {action = "UploadMultipleFiles", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadMultipleFiles(System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile]) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 13:13:08.414 +05:30 [INF] Executed DbCommand (205ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 13:13:08.549 +05:30 [INF] Executed DbCommand (31ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 13:13:08.555 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 13:13:08.603 +05:30 [INF] Executed DbCommand (39ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 13:13:08.692 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 13:13:08.851 +05:30 [INF] Executed DbCommand (73ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [ImportDataRecords] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, 0),
+(@p7, @p8, @p9, @p10, @p11, @p12, @p13, 1)) AS i ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName])
+VALUES (i.[FileHash], i.[FileName], i.[ImportedAt], i.[IsProcessing], i.[Location], i.[RecordHash], i.[UserName])
+OUTPUT INSERTED.[Id], i._Position;
+2024-10-14 13:13:08.916 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p2='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-10-14 13:13:08.939 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 13:13:09.084 +05:30 [ERR] Error processing Details12.csv: The file Details12.csv has already been processed.
+2024-10-14 13:13:09.094 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 13:13:09.100 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI) in 2389.8967ms
+2024-10-14 13:13:09.101 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 13:13:09.110 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - 200 null text/plain; charset=utf-8 2452.8159ms
+2024-10-14 14:28:29.233 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 14:28:29.233 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 14:28:29.432 +05:30 [INF] Hosting environment: Development
+2024-10-14 14:28:29.432 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 14:28:30.507 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 1293.5173ms
+2024-10-14 14:28:30.528 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 14:28:30.548 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 16.9377ms
+2024-10-14 14:28:30.577 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 14:28:30.686 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 109.9637ms
+2024-10-14 14:28:30.744 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 14:28:30.968 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 224.8864ms
+2024-10-14 14:28:54.017 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryY74EPva3rWW4XXkT 333
+2024-10-14 14:28:54.052 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 14:28:54.134 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 14:28:58.142 +05:30 [INF] Executed DbCommand (351ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 14:28:58.810 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 14:28:58.824 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 4681.9129ms
+2024-10-14 14:28:58.825 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 14:28:58.847 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 4830.8618ms
+2024-10-14 14:30:38.808 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 14:30:38.866 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 60.2816ms
+2024-10-14 14:30:38.918 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 14:30:38.943 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 14:30:38.956 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 13.148ms
+2024-10-14 14:30:39.106 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 187.6384ms
+2024-10-14 14:30:39.127 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 14:30:39.174 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 47.0424ms
+2024-10-14 14:31:05.929 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryeCVL82NzaGfBzKLU 330
+2024-10-14 14:31:05.931 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 14:31:05.932 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 14:31:06.061 +05:30 [INF] Executed DbCommand (59ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 14:31:06.257 +05:30 [INF] Executed DbCommand (45ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 14:31:06.296 +05:30 [INF] Executed DbCommand (21ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 14:31:06.500 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 14:31:06.508 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 575.2369ms
+2024-10-14 14:31:06.508 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 14:31:06.508 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 579.9952ms
+2024-10-14 15:30:13.626 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 15:30:13.688 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 15:30:13.749 +05:30 [INF] Hosting environment: Development
+2024-10-14 15:30:13.749 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 15:30:15.109 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 1513.8588ms
+2024-10-14 15:30:15.136 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 15:30:15.314 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 177.2921ms
+2024-10-14 15:30:15.368 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 15:30:16.035 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 667.4356ms
+2024-10-14 15:30:16.061 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 15:30:16.311 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 249.2996ms
+2024-10-14 15:30:43.851 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundarycLogcavfJJnPmdks 339
+2024-10-14 15:30:43.887 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 15:30:43.973 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 15:30:47.669 +05:30 [INF] Executed DbCommand (323ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 15:30:47.921 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 15:30:48.271 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 15:30:48.284 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 4303.9057ms
+2024-10-14 15:30:48.285 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 15:30:48.300 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 4449.5299ms
+2024-10-14 16:18:57.738 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:18:57.760 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 16:18:57.784 +05:30 [INF] Hosting environment: Development
+2024-10-14 16:18:57.784 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 16:18:58.479 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 754.2874ms
+2024-10-14 16:18:58.496 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:18:58.500 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:18:58.511 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 9.4204ms
+2024-10-14 16:18:58.557 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 57.4685ms
+2024-10-14 16:18:58.604 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:18:58.730 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 125.9794ms
+2024-10-14 16:19:22.062 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryZM88hwZkMX8GlJfO 330
+2024-10-14 16:19:22.082 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:19:22.126 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 16:19:23.843 +05:30 [INF] Executed DbCommand (109ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 16:19:23.989 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:19:24.076 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:19:24.087 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 16:19:24.093 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 1962.8885ms
+2024-10-14 16:19:24.093 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:19:24.106 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 2044.3652ms
+2024-10-14 16:20:00.996 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:20:01.014 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 18.3584ms
+2024-10-14 16:20:01.027 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:20:01.033 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:20:01.035 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 3.2953ms
+2024-10-14 16:20:01.051 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 20.9055ms
+2024-10-14 16:20:01.110 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:20:01.121 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 10.9346ms
+2024-10-14 16:20:17.219 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryfiiCc9q9K5lRwKch 339
+2024-10-14 16:20:17.221 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:20:17.222 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 16:20:17.264 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 16:20:17.276 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:20:17.347 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 16:20:17.352 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:20:17.358 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 16:20:17.375 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 16:20:17.386 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 16:20:17.451 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 16:20:17.456 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 16:20:17.606 +05:30 [INF] Executed DbCommand (35ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [ImportDataRecords] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, 0),
+(@p7, @p8, @p9, @p10, @p11, @p12, @p13, 1)) AS i ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName])
+VALUES (i.[FileHash], i.[FileName], i.[ImportedAt], i.[IsProcessing], i.[Location], i.[RecordHash], i.[UserName])
+OUTPUT INSERTED.[Id], i._Position;
+2024-10-14 16:20:17.641 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 16:20:17.645 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 16:20:17.674 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p2='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-10-14 16:20:17.689 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 16:20:17.690 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 467.7999ms
+2024-10-14 16:20:17.690 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:20:17.691 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 472.4196ms
+2024-10-14 16:20:47.298 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:20:47.335 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 36.9638ms
+2024-10-14 16:20:47.342 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:20:47.342 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:20:47.343 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.9923ms
+2024-10-14 16:20:47.353 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 10.0142ms
+2024-10-14 16:20:47.405 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:20:47.409 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 4.5368ms
+2024-10-14 16:21:04.213 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundary2kbA93hnoUSfkLsB 339
+2024-10-14 16:21:04.213 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:21:04.213 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 16:21:04.286 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 16:21:04.384 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 16:21:04.386 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 171.8445ms
+2024-10-14 16:21:04.386 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:21:04.386 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 172.9901ms
+2024-10-14 16:22:37.034 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:22:37.052 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 18.6122ms
+2024-10-14 16:22:37.076 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:22:37.087 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 10.2176ms
+2024-10-14 16:22:37.088 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:22:37.124 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 36.4024ms
+2024-10-14 16:22:37.142 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:22:37.148 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 5.9637ms
+2024-10-14 16:22:39.168 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:22:39.173 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 5.4453ms
+2024-10-14 16:22:39.188 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:22:39.189 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.0808ms
+2024-10-14 16:22:39.189 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:22:39.234 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 44.4954ms
+2024-10-14 16:22:39.253 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:22:39.257 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 3.7974ms
+2024-10-14 16:22:39.851 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:22:39.854 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 2.5329ms
+2024-10-14 16:22:39.894 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:22:39.895 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:22:39.897 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.78ms
+2024-10-14 16:22:39.910 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.0238ms
+2024-10-14 16:22:39.931 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:22:39.934 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 3.2651ms
+2024-10-14 16:23:16.594 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundarytpSQa2qqIHQFMRAn 338
+2024-10-14 16:23:16.594 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:23:16.594 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 16:23:16.606 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 16:23:16.613 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:23:16.616 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:23:16.617 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 16:23:16.617 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 22.798ms
+2024-10-14 16:23:16.617 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:23:16.617 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 23.9724ms
+2024-10-14 16:23:35.974 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:23:35.978 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 4.809ms
+2024-10-14 16:23:36.006 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:23:36.007 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.0267ms
+2024-10-14 16:23:36.008 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:23:36.038 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 29.8633ms
+2024-10-14 16:23:36.074 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:23:36.079 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 4.1408ms
+2024-10-14 16:23:36.981 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:23:36.990 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 9.085ms
+2024-10-14 16:23:37.014 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:23:37.014 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:23:37.018 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 4.1698ms
+2024-10-14 16:23:37.038 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 24.3889ms
+2024-10-14 16:23:37.060 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:23:37.066 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 5.8066ms
+2024-10-14 16:23:37.217 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:23:37.219 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 2.6113ms
+2024-10-14 16:23:37.234 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:23:37.236 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:23:37.237 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.6273ms
+2024-10-14 16:23:37.253 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.0936ms
+2024-10-14 16:23:37.280 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:23:37.287 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 6.2658ms
+2024-10-14 16:23:37.441 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:23:37.447 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 6.3486ms
+2024-10-14 16:23:37.471 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:23:37.478 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:23:37.480 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.8875ms
+2024-10-14 16:23:37.488 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 16.9187ms
+2024-10-14 16:23:37.507 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:23:37.510 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 2.1904ms
+2024-10-14 16:23:52.006 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryw7I2x4xapQGr0G5I 338
+2024-10-14 16:23:52.007 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:23:52.007 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 16:23:52.042 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 16:23:52.052 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:23:52.057 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:23:52.058 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 16:23:52.058 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 51.0944ms
+2024-10-14 16:23:52.058 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:23:52.059 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 52.6936ms
+2024-10-14 16:29:11.969 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 16:29:12.006 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 16:29:12.064 +05:30 [INF] Hosting environment: Development
+2024-10-14 16:29:12.064 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 16:29:12.412 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 413.2248ms
+2024-10-14 16:29:12.530 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 16:29:12.530 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 16:29:12.533 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 3.0745ms
+2024-10-14 16:29:12.599 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 68.9367ms
+2024-10-14 16:29:12.653 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 16:29:12.814 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 161.6259ms
+2024-10-14 16:29:32.489 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryPRn8l9Ly5BVHb4hC 338
+2024-10-14 16:29:32.500 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:29:32.534 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 16:29:34.031 +05:30 [INF] Executed DbCommand (72ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 16:29:34.182 +05:30 [INF] Executed DbCommand (61ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:29:34.247 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 16:29:34.253 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 16:29:34.260 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 1721.0932ms
+2024-10-14 16:29:34.261 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 16:29:34.268 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 1778.7914ms
+2024-10-14 17:40:15.961 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 17:40:15.981 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 17:40:16.008 +05:30 [INF] Hosting environment: Development
+2024-10-14 17:40:16.008 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 17:40:16.264 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 316.023ms
+2024-10-14 17:40:16.290 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 17:40:16.297 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 6.7963ms
+2024-10-14 17:40:16.330 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 17:40:16.441 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 111.0719ms
+2024-10-14 17:40:16.483 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 17:40:16.643 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 159.3118ms
+2024-10-14 17:41:33.545 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - multipart/form-data; boundary=----WebKitFormBoundary4R9ifqMfxD16R4LN 630
+2024-10-14 17:41:33.556 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 17:41:33.594 +05:30 [INF] Route matched with {action = "UploadMultipleFiles", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadMultipleFiles(System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile]) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 17:41:35.295 +05:30 [INF] Executed DbCommand (126ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 17:41:35.417 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 17:41:35.452 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 17:41:35.461 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 17:41:35.463 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 17:41:35.475 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 17:41:35.481 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.580 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 17:41:35.584 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.703 +05:30 [INF] Executed DbCommand (32ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [ImportDataRecords] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, 0),
+(@p7, @p8, @p9, @p10, @p11, @p12, @p13, 1)) AS i ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName])
+VALUES (i.[FileHash], i.[FileName], i.[ImportedAt], i.[IsProcessing], i.[Location], i.[RecordHash], i.[UserName])
+OUTPUT INSERTED.[Id], i._Position;
+2024-10-14 17:41:35.732 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.740 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.771 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p2='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-10-14 17:41:35.787 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 17:41:35.792 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 17:41:35.794 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 17:41:35.796 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 17:41:35.798 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 17:41:35.802 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 17:41:35.803 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.805 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 17:41:35.806 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.809 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [ImportDataRecords] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, 0),
+(@p7, @p8, @p9, @p10, @p11, @p12, @p13, 1)) AS i ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName])
+VALUES (i.[FileHash], i.[FileName], i.[ImportedAt], i.[IsProcessing], i.[Location], i.[RecordHash], i.[UserName])
+OUTPUT INSERTED.[Id], i._Position;
+2024-10-14 17:41:35.810 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.811 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:41:35.813 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p2='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-10-14 17:41:35.823 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 17:41:35.828 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI) in 2230.342ms
+2024-10-14 17:41:35.829 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 17:41:35.841 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - 200 null text/plain; charset=utf-8 2295.9527ms
+2024-10-14 17:42:22.665 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 17:42:22.689 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 24.1005ms
+2024-10-14 17:42:22.700 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 17:42:22.700 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 17:42:22.707 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 2.7369ms
+2024-10-14 17:42:22.722 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.7795ms
+2024-10-14 17:42:22.760 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 17:42:22.774 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 14.8294ms
+2024-10-14 17:42:34.421 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryEzfBVEBFthIAAtQJ 338
+2024-10-14 17:42:34.424 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 17:42:34.428 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 17:42:34.454 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 17:42:34.582 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 17:42:34.586 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 157.1182ms
+2024-10-14 17:42:34.586 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 17:42:34.586 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 165.4246ms
+2024-10-14 17:43:06.607 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 17:43:06.621 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 14.4948ms
+2024-10-14 17:43:06.651 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 17:43:06.653 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 17:43:06.654 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.7859ms
+2024-10-14 17:43:06.676 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.032ms
+2024-10-14 17:43:06.701 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 17:43:06.720 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.9699ms
+2024-10-14 17:43:29.524 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - multipart/form-data; boundary=----WebKitFormBoundaryGsvAbOVP9AeZbblH 631
+2024-10-14 17:43:29.524 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 17:43:29.525 +05:30 [INF] Route matched with {action = "UploadMultipleFiles", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadMultipleFiles(System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile]) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 17:43:29.588 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 17:43:29.649 +05:30 [ERR] Error processing testfiles3.csv: This file has already been processed.
+2024-10-14 17:43:29.651 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 17:43:29.657 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 17:43:29.662 +05:30 [INF] Executed DbCommand (3ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 17:43:29.670 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 17:43:29.673 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 17:43:29.680 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 17:43:29.684 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:43:29.686 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 17:43:29.687 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:43:29.694 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [ImportDataRecords] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, 0),
+(@p7, @p8, @p9, @p10, @p11, @p12, @p13, 1)) AS i ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName])
+VALUES (i.[FileHash], i.[FileName], i.[ImportedAt], i.[IsProcessing], i.[Location], i.[RecordHash], i.[UserName])
+OUTPUT INSERTED.[Id], i._Position;
+2024-10-14 17:43:29.696 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:43:29.697 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 17:43:29.705 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p2='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-10-14 17:43:29.706 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 17:43:29.706 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI) in 181.2113ms
+2024-10-14 17:43:29.707 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 17:43:29.707 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - 200 null text/plain; charset=utf-8 183.0931ms
+2024-10-14 17:44:40.552 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 17:44:40.578 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 26.2015ms
+2024-10-14 17:44:40.620 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 17:44:40.620 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 17:44:40.625 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 5.025ms
+2024-10-14 17:44:40.642 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 21.5661ms
+2024-10-14 17:44:40.666 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 17:44:40.670 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 4.1219ms
+2024-10-14 17:44:51.263 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryodvgzAt8BBW1WgXv 339
+2024-10-14 17:44:51.264 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 17:44:51.264 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 17:44:51.291 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 17:44:51.358 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 17:44:51.358 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 94.5456ms
+2024-10-14 17:44:51.359 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 17:44:51.359 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 96.4427ms
+2024-10-14 17:45:15.667 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 17:45:15.671 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 4.0383ms
+2024-10-14 17:45:15.694 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 17:45:15.694 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 17:45:15.720 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 25.8855ms
+2024-10-14 17:45:15.750 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 55.9305ms
+2024-10-14 17:45:15.776 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 17:45:15.788 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.4666ms
+2024-10-14 18:00:46.831 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:00:46.847 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 18:00:46.874 +05:30 [INF] Hosting environment: Development
+2024-10-14 18:00:46.874 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 18:00:47.161 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 338.7293ms
+2024-10-14 18:00:47.189 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:00:47.212 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:00:47.214 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 23.9605ms
+2024-10-14 18:00:47.307 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 94.2201ms
+2024-10-14 18:00:47.366 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:00:47.515 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 148.6346ms
+2024-10-14 18:01:05.139 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryGSx5kQXqLKy3tIaB 334
+2024-10-14 18:01:05.149 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:01:05.184 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:01:06.987 +05:30 [INF] Executed DbCommand (150ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:01:07.242 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 18:01:07.247 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 2059.8557ms
+2024-10-14 18:01:07.248 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:01:07.259 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 2119.5175ms
+2024-10-14 18:01:38.581 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - multipart/form-data; boundary=----WebKitFormBoundaryKUyqNbmR83BwkvvS 631
+2024-10-14 18:01:38.584 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 18:01:38.594 +05:30 [INF] Route matched with {action = "UploadMultipleFiles", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadMultipleFiles(System.Collections.Generic.List`1[Microsoft.AspNetCore.Http.IFormFile]) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:01:38.654 +05:30 [INF] Executed DbCommand (13ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:01:38.741 +05:30 [ERR] Error processing testfiles5.csv: This file has already been processed.
+2024-10-14 18:01:38.814 +05:30 [ERR] Error processing testfiles3.csv: This file has already been processed.
+2024-10-14 18:01:38.815 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:01:38.816 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI) in 221.9181ms
+2024-10-14 18:01:38.816 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadMultipleFiles (FileImportAPI)'
+2024-10-14 18:01:38.817 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-multiple - 200 null text/plain; charset=utf-8 236.1189ms
+2024-10-14 18:02:47.879 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:02:47.897 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 20.8432ms
+2024-10-14 18:02:47.913 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:02:47.917 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:02:47.922 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 5.8041ms
+2024-10-14 18:02:47.941 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 28.7655ms
+2024-10-14 18:02:47.986 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:02:47.999 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 12.3001ms
+2024-10-14 18:05:46.477 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:05:46.495 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 19.7403ms
+2024-10-14 18:05:46.512 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:05:46.528 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:05:46.529 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 15.4557ms
+2024-10-14 18:05:46.537 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 25.2587ms
+2024-10-14 18:05:46.580 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:05:46.594 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 13.9516ms
+2024-10-14 18:06:04.847 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryqWzVDXkOmlkpL26H 327
+2024-10-14 18:06:04.848 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:06:04.849 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:06:04.938 +05:30 [INF] Executed DbCommand (20ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:06:04.998 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:06:05.006 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:06:05.007 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:06:05.007 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 157.9965ms
+2024-10-14 18:06:05.007 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:06:05.008 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 160.32ms
+2024-10-14 18:11:28.226 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:11:28.398 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 192.6925ms
+2024-10-14 18:11:28.556 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:11:28.589 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 31.9397ms
+2024-10-14 18:11:28.608 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:11:28.726 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 119.3079ms
+2024-10-14 18:11:28.801 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:11:28.844 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 62.1779ms
+2024-10-14 18:11:40.093 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryYYoQ1mZepFV4HPSv 327
+2024-10-14 18:11:40.097 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:11:40.102 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:11:40.276 +05:30 [INF] Executed DbCommand (8ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:11:40.288 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:11:40.293 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:11:40.294 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:11:40.298 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 195.131ms
+2024-10-14 18:11:40.298 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:11:40.298 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 205.0213ms
+2024-10-14 18:16:43.334 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:16:43.368 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 18:16:43.398 +05:30 [INF] Hosting environment: Development
+2024-10-14 18:16:43.398 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 18:16:43.685 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:16:43.685 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 364.0967ms
+2024-10-14 18:16:43.713 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:16:43.717 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 31.2668ms
+2024-10-14 18:16:43.799 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 85.3864ms
+2024-10-14 18:16:43.961 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:16:44.144 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 180.5168ms
+2024-10-14 18:16:57.662 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryr0dKQqaiYSeIm2lI 327
+2024-10-14 18:16:57.673 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:16:57.715 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:16:59.476 +05:30 [INF] Executed DbCommand (198ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:16:59.592 +05:30 [INF] Executed DbCommand (14ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:16:59.689 +05:30 [INF] Executed DbCommand (11ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:16:59.701 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:16:59.707 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 1987.7949ms
+2024-10-14 18:16:59.708 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:16:59.718 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 2055.8088ms
+2024-10-14 18:17:30.078 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:17:30.116 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 42.5275ms
+2024-10-14 18:17:30.146 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:17:30.147 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.0927ms
+2024-10-14 18:17:30.147 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:17:30.229 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 81.9012ms
+2024-10-14 18:17:30.257 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:17:30.299 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 41.5628ms
+2024-10-14 18:17:44.141 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundary46g23TBusY7yTDE6 327
+2024-10-14 18:17:44.143 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:17:44.144 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:17:44.192 +05:30 [INF] Executed DbCommand (12ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:17:44.206 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:17:44.214 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:17:44.216 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:17:44.218 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 73.2724ms
+2024-10-14 18:17:44.218 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:17:44.219 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 78.5635ms
+2024-10-14 18:20:57.614 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:20:57.690 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 18:20:57.728 +05:30 [INF] Hosting environment: Development
+2024-10-14 18:20:57.728 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 18:20:58.418 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 832.2746ms
+2024-10-14 18:20:58.497 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:20:58.512 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 10.3243ms
+2024-10-14 18:20:58.553 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:20:58.657 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 103.237ms
+2024-10-14 18:20:59.740 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:21:00.109 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 369.454ms
+2024-10-14 18:22:22.114 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:22:22.200 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2024-10-14 18:22:22.227 +05:30 [INF] Hosting environment: Development
+2024-10-14 18:22:22.227 +05:30 [INF] Content root path: C:\Users\SivakumarArjunan\source\repos\FileImportAPI\FileImportAPI
+2024-10-14 18:22:22.697 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:22:22.712 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 13.3581ms
+2024-10-14 18:22:22.730 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:22:22.732 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 643.3106ms
+2024-10-14 18:22:22.810 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 80.7532ms
+2024-10-14 18:22:22.967 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:22:23.375 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 408.2043ms
+2024-10-14 18:22:38.659 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryhcIVDyVA9r9IBGSB 329
+2024-10-14 18:22:38.683 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:22:38.758 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:22:43.360 +05:30 [INF] Executed DbCommand (668ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:22:43.623 +05:30 [INF] Executed DbCommand (23ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:22:43.719 +05:30 [INF] Executed DbCommand (16ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 18:22:43.741 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:22:43.749 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[Id] = @__p_0
+2024-10-14 18:22:43.802 +05:30 [INF] Executed DbCommand (19ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 18:22:43.825 +05:30 [INF] Executed DbCommand (10ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 18:22:44.026 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0 AND [i].[IsProcessing] = CAST(1 AS bit)
+2024-10-14 18:22:44.032 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 18:22:44.343 +05:30 [INF] Executed DbCommand (86ms) [Parameters=[@p0='?' (Size = 4000), @p1='?' (Size = 4000), @p2='?' (DbType = DateTime2), @p3='?' (DbType = Boolean), @p4='?' (Size = 4000), @p5='?' (Size = 4000), @p6='?' (Size = 4000), @p7='?' (Size = 4000), @p8='?' (Size = 4000), @p9='?' (DbType = DateTime2), @p10='?' (DbType = Boolean), @p11='?' (Size = 4000), @p12='?' (Size = 4000), @p13='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SET IMPLICIT_TRANSACTIONS OFF;
+SET NOCOUNT ON;
+MERGE [ImportDataRecords] USING (
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, 0),
+(@p7, @p8, @p9, @p10, @p11, @p12, @p13, 1)) AS i ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName], _Position) ON 1=0
+WHEN NOT MATCHED THEN
+INSERT ([FileHash], [FileName], [ImportedAt], [IsProcessing], [Location], [RecordHash], [UserName])
+VALUES (i.[FileHash], i.[FileName], i.[ImportedAt], i.[IsProcessing], i.[Location], i.[RecordHash], i.[UserName])
+OUTPUT INSERTED.[Id], i._Position;
+2024-10-14 18:22:44.455 +05:30 [INF] Executed DbCommand (5ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 18:22:44.464 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__record_FileName_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileName] = @__record_FileName_0
+2024-10-14 18:22:44.513 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[@p1='?' (DbType = Int32), @p0='?' (DbType = Boolean), @p3='?' (DbType = Int32), @p2='?' (DbType = Boolean)], CommandType='"Text"', CommandTimeout='30']
+SET NOCOUNT ON;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p0
+OUTPUT 1
+WHERE [Id] = @p1;
+UPDATE [ImportDataRecords] SET [IsProcessing] = @p2
+OUTPUT 1
+WHERE [Id] = @p3;
+2024-10-14 18:22:44.559 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:22:44.580 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 5804.9767ms
+2024-10-14 18:22:44.582 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:22:44.607 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 5947.943ms
+2024-10-14 18:23:06.993 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:23:07.024 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 31.4851ms
+2024-10-14 18:23:07.034 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:23:07.051 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 16.5584ms
+2024-10-14 18:23:07.052 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:23:07.078 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 27.1839ms
+2024-10-14 18:23:07.129 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:23:07.145 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 16.4374ms
+2024-10-14 18:23:19.052 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryMVDws9mfViyRIkho 329
+2024-10-14 18:23:19.055 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:23:19.056 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:23:19.129 +05:30 [INF] Executed DbCommand (15ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:23:19.345 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 18:23:19.347 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 290.4616ms
+2024-10-14 18:23:19.347 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:23:19.347 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 295.461ms
+2024-10-14 18:23:25.792 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:23:25.799 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 7.4525ms
+2024-10-14 18:23:25.810 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:23:25.813 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:23:25.815 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.3532ms
+2024-10-14 18:23:25.832 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 22.305ms
+2024-10-14 18:23:25.873 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:23:25.895 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.6485ms
+2024-10-14 18:23:36.707 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryfL9gqnqvsAOuCeXh 327
+2024-10-14 18:23:36.707 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:23:36.708 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:23:36.894 +05:30 [INF] Executed DbCommand (7ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:23:36.905 +05:30 [INF] Executed DbCommand (4ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:23:36.909 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:23:36.910 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:23:36.911 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 202.6942ms
+2024-10-14 18:23:36.911 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:23:36.912 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 205.1214ms
+2024-10-14 18:24:06.691 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:24:06.709 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 18.365ms
+2024-10-14 18:24:06.749 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:24:06.768 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:24:06.783 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 14.7655ms
+2024-10-14 18:24:06.812 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 62.7119ms
+2024-10-14 18:24:06.858 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:24:06.864 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 6.2454ms
+2024-10-14 18:24:08.039 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:24:08.116 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 76.8954ms
+2024-10-14 18:24:08.149 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:24:08.150 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 1.2723ms
+2024-10-14 18:24:08.160 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:24:08.223 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 73.9705ms
+2024-10-14 18:24:08.261 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:24:08.283 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 21.3102ms
+2024-10-14 18:24:08.739 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:24:08.907 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 167.9447ms
+2024-10-14 18:24:08.913 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:24:08.916 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 2.6258ms
+2024-10-14 18:24:08.917 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:24:08.962 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 44.8676ms
+2024-10-14 18:24:08.962 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:24:08.980 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 18.2023ms
+2024-10-14 18:24:19.693 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryiZebotJ8pHGJIAJB 329
+2024-10-14 18:24:19.694 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:24:19.694 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:24:19.763 +05:30 [INF] Executed DbCommand (63ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:24:19.902 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 18:24:19.903 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 209.3719ms
+2024-10-14 18:24:19.903 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:24:19.906 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 213.1921ms
+2024-10-14 18:24:24.433 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/index.html - null null
+2024-10-14 18:24:24.484 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/index.html - 200 null text/html;charset=utf-8 50.6571ms
+2024-10-14 18:24:24.493 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - null null
+2024-10-14 18:24:24.493 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/_vs/browserLink - null null
+2024-10-14 18:24:24.494 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_framework/aspnetcore-browser-refresh.js - 200 13762 application/javascript; charset=utf-8 0.9827ms
+2024-10-14 18:24:24.511 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/_vs/browserLink - 200 null text/javascript; charset=UTF-8 18.6948ms
+2024-10-14 18:24:24.567 +05:30 [INF] Request starting HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - null null
+2024-10-14 18:24:24.576 +05:30 [INF] Request finished HTTP/2 GET https://localhost:44371/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 9.7716ms
+2024-10-14 18:24:35.606 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundaryV9ANfo37uFlOro3R 327
+2024-10-14 18:24:35.606 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:24:35.607 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:24:35.628 +05:30 [INF] Executed DbCommand (18ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:24:35.641 +05:30 [INF] Executed DbCommand (6ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:24:35.645 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@__recordHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[RecordHash] = @__recordHash_0
+2024-10-14 18:24:35.646 +05:30 [INF] Executing OkObjectResult, writing value of type 'System.String'.
+2024-10-14 18:24:35.648 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 40.9941ms
+2024-10-14 18:24:35.648 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:24:35.648 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 200 null text/plain; charset=utf-8 42.0453ms
+2024-10-14 18:24:46.176 +05:30 [INF] Request starting HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - multipart/form-data; boundary=----WebKitFormBoundary1MvWlyQgT2ergylP 329
+2024-10-14 18:24:46.177 +05:30 [INF] Executing endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:24:46.177 +05:30 [INF] Route matched with {action = "UploadSingleFile", controller = "ImportData"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] UploadSingleFile(Microsoft.AspNetCore.Http.IFormFile) on controller FileImportAPI.Controllers.ImportDataController (FileImportAPI).
+2024-10-14 18:24:46.268 +05:30 [INF] Executed DbCommand (87ms) [Parameters=[@__fileHash_0='?' (Size = 4000)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [i].[Id], [i].[FileHash], [i].[FileName], [i].[ImportedAt], [i].[IsProcessing], [i].[Location], [i].[RecordHash], [i].[UserName]
+FROM [ImportDataRecords] AS [i]
+WHERE [i].[FileHash] = @__fileHash_0
+2024-10-14 18:24:46.452 +05:30 [INF] Executing ConflictObjectResult, writing value of type 'System.String'.
+2024-10-14 18:24:46.455 +05:30 [INF] Executed action FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI) in 277.6355ms
+2024-10-14 18:24:46.455 +05:30 [INF] Executed endpoint 'FileImportAPI.Controllers.ImportDataController.UploadSingleFile (FileImportAPI)'
+2024-10-14 18:24:46.455 +05:30 [INF] Request finished HTTP/2 POST https://localhost:44371/api/ImportData/upload-single - 409 null text/plain; charset=utf-8 278.9555ms
